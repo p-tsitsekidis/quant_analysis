@@ -1,6 +1,6 @@
 """
-Perform simple linear regression on power market data to analyze
-the relationship between electricity Load and Price.
+Perform linear and multiple linear regression on cleaned power market data
+to quantify the influence of Load, Wind, and Hour on electricity Price.
 """
 
 import pandas as pd
@@ -25,10 +25,13 @@ logger.info("Loading CSV data...")
 csv_file_df = pd.read_csv(CLEANED_CSV)
 
 logger.info("Loading DB data...")
-db_file_df = pd.read_sql("SELECT * FROM power", conn)
+db_file_df = pd.read_sql("SELECT * FROM power WHERE Hour BETWEEN 8 AND 20", conn)
 conn.close()
 
 # Simple linear regression
 linear_model = ols(formula="Price ~ Load", data=csv_file_df).fit()
-
 logger.info(linear_model.summary())
+
+# Multi-linear regression on a subset
+multi_model = ols("Price ~ Load + Wind + Hour", data=db_file_df).fit()
+logger.info(multi_model.summary())
