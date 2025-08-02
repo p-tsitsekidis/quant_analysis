@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+
+# VSCode
+.vscode/
+
+# Environment
+quant_env/
+.env
+
+# Data files
+*.csv
+!data/*.csv  # Only allow committed CSVs from the data folder
