@@ -11,4 +11,5 @@ quant_env/
 
 # Data files
 *.csv
+*.db
 !data/*.csv  # Only allow committed CSVs from the data folder
