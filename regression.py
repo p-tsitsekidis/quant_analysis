@@ -7,7 +7,6 @@ import pandas as pd
 import logging
 import matplotlib.pyplot as plt
 import sqlite3
-import numpy as np
 import seaborn as sns
 
 from statsmodels.formula.api import ols
