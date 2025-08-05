@@ -82,3 +82,15 @@ corr = db_file_df[["Price", "Load", "Wind", "Hour"]].corr()
 sns.heatmap(corr, annot=True, cmap="coolwarm")
 plt.title("Correlation Matrix")
 plt.show()
+
+# Predicted versus Actual
+y_true = db_file_df["Price"]
+y_pred_multi = multi_model.predict(db_file_df)
+
+plt.scatter(y_true, y_pred_multi, alpha=0.3, s=10)
+plt.plot([y_true.min(), y_true.max()], [y_true.min(), y_true.max()], "r--")
+plt.xlabel("Actual Price")
+plt.ylabel("Predicted Price")
+plt.title("Predicted versus Actual (Multi-linear)")
+plt.grid(True)
+plt.show()
