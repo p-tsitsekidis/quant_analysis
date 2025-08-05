@@ -7,6 +7,7 @@ import pandas as pd
 import logging
 import matplotlib.pyplot as plt
 import sqlite3
+import numpy as np
 
 from statsmodels.formula.api import ols
 
@@ -44,3 +45,15 @@ plt.title("Electricity Price vs Load")
 plt.grid(True)
 plt.show()
 
+# Regression Line Plot (Price vs Load)
+x = csv_file_df["Load"]
+y = csv_file_df["Price"]
+y_pred = linear_model.predict(csv_file_df)
+
+plt.scatter(x, y, alpha=0.3, label="Observed", s=10)
+plt.plot(x, y_pred, color="red", label="Fitted Line")
+plt.xlabel("Load (MW)")
+plt.ylabel("Price (€/MWh)")
+plt.title("Linear Regression: Price ~ Load")
+plt.legend()
+plt.show()
