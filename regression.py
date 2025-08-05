@@ -68,3 +68,10 @@ plt.ylabel("Residual")
 plt.title("Residuals versus Fitted Values")
 plt.grid(True)
 plt.show()
+
+# Histogram of Residuals
+plt.hist(residuals, bins=50, edgecolor="black")
+plt.xlabel("Residual")
+plt.ylabel("Frequency")
+plt.title("Histogram of Residuals")
+plt.show()
