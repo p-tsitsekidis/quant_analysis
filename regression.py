@@ -5,7 +5,7 @@ to quantify the influence of Load, Wind, and Hour on electricity Price.
 
 import pandas as pd
 import logging
-import matplotlib
+import matplotlib.pyplot as plt
 import sqlite3
 
 from statsmodels.formula.api import ols
@@ -35,3 +35,12 @@ logger.info(linear_model.summary())
 # Multi-linear regression on a subset
 multi_model = ols("Price ~ Load + Wind + Hour", data=db_file_df).fit()
 logger.info(multi_model.summary())
+
+# Price versus Load plot
+plt.scatter(csv_file_df["Load"], csv_file_df["Price"], alpha=0.3, s=10)
+plt.xlabel("Load (MW)")
+plt.ylabel("Price (€/MWh)")
+plt.title("Electricity Price vs Load")
+plt.grid(True)
+plt.show()
+
