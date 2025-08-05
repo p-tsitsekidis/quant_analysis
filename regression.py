@@ -45,7 +45,7 @@ plt.title("Electricity Price vs Load")
 plt.grid(True)
 plt.show()
 
-# Regression Line Plot (Price vs Load)
+# Regression line plot (Price versus Load)
 x = csv_file_df["Load"]
 y = csv_file_df["Price"]
 y_pred = linear_model.predict(csv_file_df)
