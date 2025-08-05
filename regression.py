@@ -8,6 +8,7 @@ import logging
 import matplotlib.pyplot as plt
 import sqlite3
 import numpy as np
+import seaborn as sns
 
 from statsmodels.formula.api import ols
 
@@ -74,4 +75,10 @@ plt.hist(residuals, bins=50, edgecolor="black")
 plt.xlabel("Residual")
 plt.ylabel("Frequency")
 plt.title("Histogram of Residuals")
+plt.show()
+
+# Heatmap of Correlations
+corr = db_file_df[["Price", "Load", "Wind", "Hour"]].corr()
+sns.heatmap(corr, annot=True, cmap="coolwarm")
+plt.title("Correlation Matrix")
 plt.show()
