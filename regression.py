@@ -57,3 +57,14 @@ plt.ylabel("Price (€/MWh)")
 plt.title("Linear Regression: Price ~ Load")
 plt.legend()
 plt.show()
+
+# Residual Plot
+residuals = linear_model.resid
+
+plt.scatter(y_pred, residuals, alpha=0.3, s=10)
+plt.axhline(0, color="red", linestyle="--")
+plt.xlabel("Predicted Price")
+plt.ylabel("Residual")
+plt.title("Residuals versus Fitted Values")
+plt.grid(True)
+plt.show()
