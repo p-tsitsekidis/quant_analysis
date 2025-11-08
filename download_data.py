@@ -4,6 +4,7 @@
 
 import pandas as pd
 import logging
+import os
 
 # Setup Logger
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s", handlers=[logging.StreamHandler()])
@@ -15,6 +16,7 @@ url = "https://data.open-power-system-data.org/time_series/2020-10-06/time_serie
 
 df = pd.read_csv(url)
 logger.info("Saving to data/power_data_raw.csv")
+os.makedirs("data", exist_ok=True)
 df.to_csv("data/power_data_raw.csv", index=False)
 
 logger.info("Process completed.")
